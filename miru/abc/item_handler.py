@@ -324,8 +324,6 @@ class ItemHandler(Sequence, abc.ABC, t.Generic[BuilderT]):  # type: ignore[type-
             if on_error := getattr(self, "on_error", None):
                 await on_error(error)
 
-        self.stop()
-
     def _create_task(self, coro: t.Awaitable[t.Any], *, name: t.Optional[str] = None) -> asyncio.Task[t.Any]:
         """
         Run tasks inside the itemhandler internally while keeping a reference to the provided task.
